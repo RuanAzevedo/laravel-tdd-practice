@@ -13,6 +13,7 @@ class CreateCodeCategoriesTable extends Migration
             $table->integer('parent_id')->nullable(true)->unsigned(true);
             $table->foreign('parent_id')->references('id')->on('codepress_categories');
             $table->string('name');
+            $table->string('slug');
             $table->boolean('active')->default(false);
             $table->timestamps();
         });

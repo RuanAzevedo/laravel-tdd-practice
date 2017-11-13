@@ -3,6 +3,7 @@
 namespace CodePress\CodeCategory\Tests;
 
 use CodePress\CodeCategory\Providers\CodeCategoryServiceProvider;
+use Cviebrock\EloquentSluggable\ServiceProvider;
 use Orchestra\Testbench\TestCase;
 
 abstract class AbstractTestCase extends TestCase
@@ -15,7 +16,10 @@ abstract class AbstractTestCase extends TestCase
 
     public function getPackageProviders($app)
     {
-        return [CodeCategoryServiceProvider::class];
+        return [
+            CodeCategoryServiceProvider::class,
+            ServiceProvider::class
+        ];
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace CodePress\CodeCategory\Providers;
 
-
 use Illuminate\Support\ServiceProvider;
 
 class CodeCategoryServiceProvider extends ServiceProvider
@@ -10,12 +9,11 @@ class CodeCategoryServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../../resources/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../../resources/migrations');
 
-        $this->publishes(
-            [__DIR__ . '/../../resources/migrations' => base_path('databases/migrations')],
-            'migrations'
-        );
+        $this->publishes([__DIR__ . '/../../resources/migrations' => base_path('database/migrations')], 'migrations');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views/codecategory', 'codecategory');
+        require_once __DIR__ . '/../routes.php';
     }
 
     public function register()
